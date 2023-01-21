@@ -22,9 +22,14 @@
       <div class="header clearfix">
         <nav>
           <ul class="nav nav-pills pull-right">
-            <li role="presentation" class="active"><a href="#">Home</a></li>
+            <li role="presentation" class="active"><a href="http://127.0.0.1:5000/">Home</a></li>
             <li role="presentation"><a href="#">About</a></li>
-            <li role="presentation"><a href="#">Contact</a></li>
+            {% if current_user.is_authenticated %}
+              <li><a href="{{url_for('logout')}}">Logout</a></li>
+            {% else %}
+              <li role="presentation"><a href="http://127.0.0.1:5000/login/">Login</a></li>
+            {% endif %}  
+            <li role="presentation"><a href="#">contact</a></li>
           </ul>
         </nav>
         <h3 class="text-muted">{%block logo%}Facebug{%endblock%}</h3>
